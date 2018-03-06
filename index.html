@@ -1,6 +1,380 @@
 <!DOCTYPE html>
 <html>
+<head>
+<style type="text/css">
+	:root {
+		--text: #efefef;
+		--background: #000000;
+		--title: #ffffff;
+		--link: #aaaaaa;
+		--link-h: #FFFFFF;
+		--post-bg: #202020;
+		--tags-bg: #303030;
+		--sidebar: #202020;
+		--navigation: #202020;
+		--grey: #bfbfbf;
+		--yellow: #fff069;
+		--blue: #69afff;
+		--red: #ff4747;
+	}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    font-size: 13px;
+    /*background-image: url('{image:background}');
+    background-position: center top;
+    background-repeat: repeat-x;
+    background-attachment: fixed;
+    font-family: 'Galdeano';*/
+}
+
+a {
+    text-decoration: none;
+    color: var(--link) !important;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+}
+
+a:hover {
+    color: var(--link-h) !important;
+}
+
+b, strong {
+    color: var(--text);
+}
+
+i, em {
+    color: var(--text);
+}
+
+blockquote {
+    padding:0px;
+    padding-left:6px;
+    margin:-5px 0 -3px 6px;
+    border-left-style: solid;
+    border-width: 1px;
+    border-color: var(--grey);
+}
+
+/*actual grapics stuff*/
+.border {
+    position: fixed;
+    margin: -10px 0px 0px 230px;
+    height: 200%;
+    width: 3px;
+    /*border*/
+    border-left-style: solid;
+    border-right-style: dashed;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-color: var(--yellow);
+}
+
+.border:hover {
+    border-right-color: var(--grey);
+    border-left-color: var(--red);
+}
+
+/*
+.idbox {
+    position: fixed;
+    margin: 50px 0 0 150px;
+    padding: 0;
+    height: 50px;
+    width: 50px;
+    /*border*//*
+    border: 10px solid transparent;
+    -webkit-border-image: url({image:gbox}) 50 round; /* Safari 3.1-5 *//*
+    border-image: url({image:gbox}) 50 round;
+    /*animation*//*
+    animation-name: colorchange;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+*/
+
+/*
+@keyframes colorchange {
+    0% {border-image: url({image:gbox}) 50 round;}
+    25% {border-image: url({image:bbox}) 50 round;}
+    37% {border-image: url({image:aibox}) 50 round;}
+    50% {border-image: url({image:ybox}) 50 round;}
+    75% {border-image: url({image:rbox}) 50 round;}
+    80% {border-image: url({image:rboxalt}) 50 round;} 
+    90% {border-image: url({image:gbox}) 50 round;}
+}
+*/
+
+.sidebar {
+    position: fixed;
+    margin: 150px 0 0 0px;
+    padding: 5px 0 0 0;
+    height: 100%;
+    width: 210px;
+}
+
+.title {
+    margin: 0 0 0 -5px;
+    text-align: left;
+    font-family: 'Courier New';
+    font-size: 20px;
+    word-wrap: break-word;
+}
+
+.line {
+    position: relative;
+    margin: 0px 0px 5px -10px;
+    width: 205px;
+    height: 20px;
+    border-radius: 10px;
+    /*text*/
+    font-family: 'Courier New';
+    font-size: 20px;
+}
+
+.thingy {
+    position: fixed;
+    margin: 2px 0 5px 2px;
+    padding: 2px;
+    opacity: 1;
+    text-decoration: none;
+    color: var(--link);
+}
+
+.dot1 {
+    position: fixed;
+    margin: 2px 0 5px 15px;
+    padding: 2px;
+    opacity: 0;
+    color: var(--link);
+    /*animation*/
+    animation-name: firstdot;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes firstdot {
+    0% {opacity: 0;}
+    25% {opacity: 1;}
+    50% {opacity: 1;}
+    75% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.dot2 {
+    position: fixed;
+    margin: 2px 0 5px 25px;
+    padding: 2px;
+    opacity: 0;
+    color: var(--link);
+    /*animation*/
+    animation-name: seconddot;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes seconddot {
+    0% {opacity: 0;}
+    25% {opacity: 0;}
+    50% {opacity: 1;}
+    75% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.dot3 {
+    position: fixed;
+    margin: 2px 0 5px 35px;
+    padding: 2px;
+    opacity: 1;
+    color: var(--link);
+    /*animation*/
+    animation-name: thirddot;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes thirddot {
+    0% {opacity: 0;}
+    25% {opacity: 0;}
+    50% {opacity: 0;}
+    75% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.description {
+    position: relative;
+    margin: 10px 0 0 5px;
+    padding: 5px;
+    width: 200px;
+    background: var(--sidebar);
+    /*border*/
+    border: solid;
+    border-color: var(--grey);
+    border-width: 1px;
+    border-radius: 5px;
+    /*text*/
+    text-align: center;
+
+}
+
+.pagination {
+    position: relative;
+    margin: 5px 0 0 10px;
+    padding: 0;
+    width: 100%;
+    /*text*/
+    font-family: 'Futura';
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 10px;
+    color: var(--link);
+}
+
+.prevpagination {
+    position: absolute;
+    left: 0px;
+    padding: 4px;
+    width: 75px;
+    opacity: 0.5;
+    background: var(--post-bg);
+    /*border*/
+    border-radius: 10px 3px 10px 10px;
+    border: solid;
+    border-width: 1px;
+    border-color: var(--grey);
+}
+
+.prevpagination:hover {
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+    opacity: 1;
+    color: var(--link-h);
+}
+
+
+.nextpagination {
+    position: absolute;
+    right: 10px;
+    padding: 4px;
+    width: 75px;
+    opacity: 0.5;
+    background: var(--post-bg);
+    /*border*/
+    border-radius: 3px 10px 10px 10px;
+    border: solid;
+    border-width: 1px;
+    border-color: var(--grey);
+}
+
+.nextpagination:hover {
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+    opacity: 1;
+    color: var(--link-h);
+}
+
+.navigation {
+    position: relative;
+    margin: 45px 0 0 -10px;
+    padding 5px;
+    height: 100%;
+    width: 30px;
+    opacity: 1;
+    background: var(--navigation);
+    /*border*/
+    border-top-style: solid;
+    border-right-style: solid;
+    border-color: var(--grey);
+    border-width: 2px;
+    border-radius: 0px 5px 5px 5px;
+    /*text*/
+    font-family: 'Futura';
+    text-align: right;
+    white-space: nowrap;
+    text-overflow: clip;
+    overflow: hidden;
+    /*transform/translation stuff*/
+    -webkit-transition: width 1.2s; /* Safari */
+    transition: width 1.2s; /* Standard syntax */
+}
+
+.navigation:hover {
+    width: 175px;
+}
+
+.navigation-title {
+    float: right;
+    margin: 0 10px 0 0;
+    transform: rotate(270deg);
+    transform-origin: 100%;
+    /*text*/
+    text-transform: uppercase;
+    color: var(--title);
+    font-size: 14px;
+}
+
+.navigation-content {
+    opacity: 0;
+    float: left;
+    width: 150px;
+    /*text*/
+    font-size: 12px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-overflow: clip;
+    overflow: hidden;
+    /*transform/translation stuff*/
+    -webkit-transition: opacity 1s;
+    transition: opacity 1s;
+}
+
+.navigation:hover .navigation-content{
+    opacity: 1;
+    width: 150px;
+    text-overflow: inherit;
+    overflow: hidden;
+}
+</style>
+</head>
+
 <body>
-hello world
+<div class="idbox"></div>
+<div class="border"></div>
+<div class="sidebar">
+    <div class="title">
+    	<strong><a href="/">>title</a></strong>
+    </div>
+    <div class="line">
+        <b><div class="thingy">></div></b>
+        <div class="dot1">.</div>
+        <div class="dot2">.</div>
+        <div class="dot3">.</div>
+    </div>
+    <div class="description">
+    	description text here
+    </div>
+    <div class="navigation">
+        <div class="navigation-title">navigation</div>
+        <div class="navigation-content" style="text-overflow:clip;">
+            <a href="/">link</a><br>
+            <a href="/">link</a><br>
+            <a href="/">link</a><br>
+            <a href="/">link</a><br>
+            <a href="/">link</a><br>
+            <a href="/">link</a><br>
+            <a href="/">link</a><br>
+        </div>
+    </div>
+</div>
 </body>
 </html>
