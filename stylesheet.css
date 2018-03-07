@@ -18,11 +18,11 @@ body {
     background-color: var(--background);
     color: var(--text);
     font-size: 13px;
+    font-family: 'Courier New';
     /*background-image: url('{image:background}');
     background-position: center top;
     background-repeat: repeat-x;
-    background-attachment: fixed;
-    font-family: 'Galdeano';*/
+    background-attachment: fixed;*/
 }
 
 a {
@@ -217,7 +217,7 @@ blockquote {
 
 }
 
-.pagination {
+.pagnation {
     position: relative;
     margin: 5px 0 0 10px;
     padding: 0;
@@ -230,7 +230,7 @@ blockquote {
     color: var(--link);
 }
 
-.prevpagination {
+.prevpagnation {
     position: absolute;
     left: 0px;
     padding: 4px;
@@ -244,7 +244,7 @@ blockquote {
     border-color: var(--grey);
 }
 
-.prevpagination:hover {
+.prevpagnation:hover {
     -o-transition:.5s;
     -ms-transition:.5s;
     -moz-transition:.5s;
@@ -255,7 +255,7 @@ blockquote {
 }
 
 
-.nextpagination {
+.nextpagnation {
     position: absolute;
     right: 10px;
     padding: 4px;
@@ -269,7 +269,7 @@ blockquote {
     border-color: var(--grey);
 }
 
-.nextpagination:hover {
+.nextpagnation:hover {
     -o-transition:.5s;
     -ms-transition:.5s;
     -moz-transition:.5s;
@@ -339,4 +339,28 @@ blockquote {
     width: 150px;
     text-overflow: inherit;
     overflow: hidden;
+}
+
+/*main stuff*/
+.main {
+    position: relative;
+    margin: 0 0 0 250px;
+    padding: 10px 10px 20px 10px;
+    width: 600px;
+}
+
+.main-title{
+    font-size: 14px;
+    font-family: 'Futura';
+    text-transform: uppercase;
+    color: var(--title);
+}
+
+.main-text{
+    padding: 5px;
+    background: var(--post-bg);
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--grey);
 }
